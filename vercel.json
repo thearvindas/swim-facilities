@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "calgary_schools_aquatic_map.html",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/calgary_schools_aquatic_map.html"
+      "dest": "/index.html"
     }
   ]
 } 

@@ -2,31 +2,14 @@
 Calgary Schools and Aquatic Facilities Map Generator
 
 This script creates an interactive map showing schools and aquatic facilities in Calgary.
-It uses cached school data and sample aquatic facility data for development.
+It uses cached school data and real aquatic facility data from the City of Calgary.
 """
 
 import folium
 import pandas as pd
 from typing import List, Dict, Optional
 from school_scraper import CBEScraper
-
-# Sample aquatic facilities data
-SAMPLE_AQUATIC = [
-    {
-        "name": "Repsol Sport Centre",
-        "address": "2225 Macleod Trail SE, Calgary, AB",
-        "type": "Municipal",
-        "latitude": 51.0312,
-        "longitude": -114.0577
-    },
-    {
-        "name": "Killarney Aquatic Centre",
-        "address": "1919 29 St SW, Calgary, AB",
-        "type": "Municipal",
-        "latitude": 51.0356,
-        "longitude": -114.1298
-    }
-]
+from aquatic_scraper import AquaticScraper
 
 class MapGenerator:
     def __init__(self):
@@ -73,16 +56,31 @@ class MapGenerator:
         aquatic_layer = folium.FeatureGroup(name="Aquatic Facilities")
         
         for facility in facilities:
+            # Skip facilities without coordinates
+            if 'latitude' not in facility or 'longitude' not in facility:
+                continue
+                
             popup_html = f"""
                 <b>{facility['name']}</b><br>
                 Type: {facility['type']}<br>
-                Address: {facility['address']}
+                Address: {facility['address']}<br>
+                Features: {', '.join(facility['features'])}
             """
             
+            # Color coding based on facility type
+            if facility['type'] == 'Municipal':
+                icon_color = 'green'
+            elif facility['type'] == 'YMCA':
+                icon_color = 'red'
+            elif facility['type'] == 'University':
+                icon_color = 'purple'
+            else:  # Private facilities
+                icon_color = 'orange'
+                
             folium.Marker(
                 location=[facility['latitude'], facility['longitude']],
                 popup=folium.Popup(popup_html, max_width=300),
-                icon=folium.Icon(color='green', icon='tint', prefix='fa'),
+                icon=folium.Icon(color=icon_color, icon='info-sign'),
             ).add_to(aquatic_layer)
         
         aquatic_layer.add_to(map_obj)
@@ -107,19 +105,25 @@ def main():
     # Initialize map generator
     generator = MapGenerator()
     
-    # Get school data from cache (or scrape if needed)
+    # Get school data
     print("Getting schools data...")
-    scraper = CBEScraper()
-    schools = scraper.scrape_schools(force_refresh=False)  # Use cache if available
+    school_scraper = CBEScraper()
+    schools = school_scraper.scrape_schools(force_refresh=False)
     print(f"Found {len(schools)} schools")
     
-    # Generate map using scraped schools and sample aquatic facilities
-    map_obj = generator.generate_map(schools, SAMPLE_AQUATIC)
+    # Get aquatic facility data
+    print("\nGetting aquatic facilities data...")
+    aquatic_scraper = AquaticScraper()
+    facilities = aquatic_scraper.scrape_facilities(force_refresh=False)
+    print(f"Found {len(facilities)} aquatic facilities")
+    
+    # Generate map
+    map_obj = generator.generate_map(schools, facilities)
     
     # Save the map
-    output_file = "calgary_schools_aquatic_map.html"
+    output_file = "index.html"
     map_obj.save(output_file)
-    print(f"Map has been generated and saved to {output_file}")
+    print(f"\nMap has been generated and saved to {output_file}")
 
 if __name__ == "__main__":
     main() 
