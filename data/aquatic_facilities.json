@@ -314,5 +314,49 @@
     ],
     "latitude": 51.120380320965346,
     "longitude": -113.94821202922515
+  },
+  {
+    "name": "Village Square Leisure Centre",
+    "address": "2623 56 Street NE, Calgary, AB T1Y 6E6",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Wave pool",
+      "Water slides",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.07615795046256,
+    "longitude": -113.95442775018994
+  },
+  {
+    "name": "Trico Centre for Family Wellness",
+    "address": "11150 Bonaventure Drive SE, Calgary, AB T2J 6R9",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre",
+      "Arena"
+    ],
+    "latitude": 50.95170358810304,
+    "longitude": -114.05913209171773
+  },
+  {
+    "name": "Southland Leisure Centre",
+    "address": "2000 Southland Drive SW, Calgary, AB T2V 4S4",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Wave pool",
+      "Water slides",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre"
+    ],
+    "latitude": 50.96242536281527,
+    "longitude": -114.10825438733833
   }
 ]
