@@ -33,4 +33,5 @@ ENV/
 
 # Project specific
 data/
-*.html 
+*.html
+!index.html 

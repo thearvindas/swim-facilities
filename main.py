@@ -27,7 +27,7 @@ class MapGenerator:
 
     def add_school_markers(self, map_obj: folium.Map, schools: List[Dict]) -> folium.FeatureGroup:
         """Add school markers to the map."""
-        school_layer = folium.FeatureGroup(name="K-12 Schools")
+        school_layer = folium.FeatureGroup(name="K-12 Schools", show=False)
         
         for school in schools:
             # Skip schools without coordinates

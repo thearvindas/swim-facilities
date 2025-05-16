@@ -1,7 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "pip install -r requirements.txt && python main.py",
   "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    },
     {
       "src": "index.html",
       "use": "@vercel/static"
@@ -12,5 +15,10 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "PYTHONPATH": "."
+    }
+  }
 } 
