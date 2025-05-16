@@ -1,0 +1,278 @@
+[
+  {
+    "name": "Acadia Aquatic & Fitness Centre",
+    "address": "9009 Fairmount Drive SE, Calgary, AB T2H 0Z4",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Weights & cardio",
+      "Fitness studio"
+    ],
+    "latitude": 50.9735284,
+    "longitude": -114.0600219
+  },
+  {
+    "name": "Bob Bahan Aquatic & Fitness Centre",
+    "address": "4812 14 Avenue SE, Calgary, AB T2A 0H9",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Hot tub",
+      "Steam room",
+      "Weights & cardio"
+    ],
+    "latitude": 51.0412903,
+    "longitude": -113.9639387
+  },
+  {
+    "name": "Canyon Meadows Aquatic & Fitness Centre",
+    "address": "89 Canova Road SW, Calgary, AB T2W 3H2",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Steam room",
+      "Weights & cardio"
+    ],
+    "latitude": 50.9484311,
+    "longitude": -114.0895622
+  },
+  {
+    "name": "Foothills Aquatic Centre",
+    "address": "2915 24 Avenue NW, Calgary, AB T2N 1P4",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Wading pool"
+    ],
+    "latitude": 51.0741052,
+    "longitude": -114.1254855
+  },
+  {
+    "name": "Glenmore Aquatic Centre",
+    "address": "5330 19 Street SW, Calgary, AB T3E 1P3",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Hot tub"
+    ],
+    "latitude": 51.0062475,
+    "longitude": -114.1054197
+  },
+  {
+    "name": "Inglewood Aquatic Centre",
+    "address": "1527 17 Avenue SE, Calgary, AB T2G 1J9",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Aquatic climbing wall",
+      "Slides",
+      "Dry Sauna"
+    ],
+    "latitude": 51.0374788,
+    "longitude": -114.0286735
+  },
+  {
+    "name": "Killarney Aquatic & Recreation Centre",
+    "address": "1919 29 Street SW, Calgary, AB T3E 2K2",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Hot tub",
+      "Teaching pool",
+      "Steam room"
+    ],
+    "latitude": 51.0373372,
+    "longitude": -114.1302976
+  },
+  {
+    "name": "Renfrew Aquatic & Recreation Centre",
+    "address": "810 13 Avenue NE, Calgary, AB T2E 4P3",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Hot tub",
+      "Steam room"
+    ],
+    "latitude": 51.0645211,
+    "longitude": -114.0454174
+  },
+  {
+    "name": "Shouldice Aquatic Centre",
+    "address": "5303 Bowness Road NW, Calgary, AB T3B 0C5",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Steam room"
+    ],
+    "latitude": 51.0771666,
+    "longitude": -114.1720909
+  },
+  {
+    "name": "Sir Winston Churchill Aquatic & Recreation Centre",
+    "address": "1520 Northmount Drive NW, Calgary, AB T2L 0G6",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Dive tank",
+      "Hot tub",
+      "Steam room"
+    ],
+    "latitude": 51.0968826,
+    "longitude": -114.1378878
+  },
+  {
+    "name": "Brookfield Residential YMCA at Seton",
+    "address": "4995 Market Street SE, Calgary, AB T3M 2P9",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Competition Pool (50m)",
+      "Dive Tower",
+      "Flow Rider Surf Simulator",
+      "Hot Tub",
+      "Steam Room"
+    ],
+    "latitude": 50.8796107,
+    "longitude": -113.9449596
+  },
+  {
+    "name": "Melcor YMCA at Crowfoot",
+    "address": "8100 John Laurie Blvd NW, Calgary, AB T3G 3S3",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Hot Tub",
+      "Steam Room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.1285783,
+    "longitude": -114.1953143
+  },
+  {
+    "name": "Remington YMCA in Quarry Park",
+    "address": "108 Quarry Park Rd SE, Calgary, AB T2C 5R1",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Hot Tub",
+      "Steam Room",
+      "Fitness Centre"
+    ],
+    "latitude": 50.9616581,
+    "longitude": -114.0060844
+  },
+  {
+    "name": "Shane Homes YMCA at Rocky Ridge",
+    "address": "11300 Rocky Ridge Rd NW, Calgary, AB T3G 5H3",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Leisure Pool",
+      "Hot Tub",
+      "Steam Room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.1571255,
+    "longitude": -114.2314445
+  },
+  {
+    "name": "Shawnessy YMCA",
+    "address": "400-333 Shawville Blvd SE, Calgary, AB T2Y 4H3",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Hot Tub",
+      "Steam Room",
+      "Fitness Centre"
+    ],
+    "latitude": 50.8994471,
+    "longitude": -114.0632557
+  },
+  {
+    "name": "University of Calgary Aquatic Centre",
+    "address": "2500 University Drive NW, Calgary, AB T2N 1N4",
+    "type": "University",
+    "features": [
+      "50m Olympic Pool",
+      "Dive Tank",
+      "Hot Tub",
+      "Steam Room",
+      "Spectator Seating"
+    ],
+    "latitude": 51.0799734,
+    "longitude": -114.1308544
+  },
+  {
+    "name": "SAIT Campus Centre Pool",
+    "address": "1301 16 Avenue NW, Calgary, AB T2M 0L4",
+    "type": "University",
+    "features": [
+      "25m Pool",
+      "Hot Tub",
+      "Steam Room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.0644548,
+    "longitude": -114.0891491
+  },
+  {
+    "name": "Calgary Winter Club",
+    "address": "4611 14 Street NW, Calgary, AB T2K 1J7",
+    "type": "Private",
+    "features": [
+      "25m Pool",
+      "Competition Pool",
+      "Flags at 4.9m"
+    ],
+    "latitude": 51.0918583,
+    "longitude": -114.0947068
+  },
+  {
+    "name": "MNP Community & Sports Centre",
+    "address": "2225 Macleod Trail SE, Calgary, AB T2G 5B6",
+    "type": "Municipal",
+    "features": [
+      "Competition Pool",
+      "Dive Tank",
+      "Hot Tub",
+      "Steam Room"
+    ],
+    "latitude": 51.0308455,
+    "longitude": -114.0593498
+  },
+  {
+    "name": "VIVO For Healthier Generations",
+    "address": "11950 Country Village Link NE, Calgary, AB T3K 6E3",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.159500,
+    "longitude": -114.065972
+  },
+  {
+    "name": "Westside Recreation Centre",
+    "address": "2000 69 Street SW, Calgary, AB T3H 4V7",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Wave pool",
+      "Water slides",
+      "Fitness Centre"
+    ],
+    "latitude": 51.035583,
+    "longitude": -114.186139
+  }
+]
