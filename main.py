@@ -22,11 +22,15 @@ class MapGenerator:
 
     def create_base_map(self) -> folium.Map:
         """Create the base map centered on Calgary."""
-        return folium.Map(
+        map_obj = folium.Map(
             location=self.CALGARY_CENTER,
             zoom_start=self.ZOOM_LEVEL,
-            tiles="OpenStreetMap"
+            tiles='cartodbpositron'
         )
+        
+        # Add layer control
+        folium.LayerControl().add_to(map_obj)
+        return map_obj
 
     def add_school_markers(self, map_obj: folium.Map, schools: List[Dict]) -> folium.FeatureGroup:
         """Add school markers to the map."""
@@ -47,141 +51,103 @@ class MapGenerator:
             
             folium.Marker(
                 location=[school['latitude'], school['longitude']],
-                popup=folium.Popup(popup_html, max_width=300),
-                icon=folium.Icon(color='blue', icon='info-sign'),
+                popup=popup_html,
+                icon=folium.Icon(color='gray', icon='info-sign')
             ).add_to(school_layer)
-        
+            
         school_layer.add_to(map_obj)
         return school_layer
 
-    def add_aquatic_markers(self, map_obj: folium.Map, facilities: List[Dict]) -> None:
-        """Add aquatic facility markers to the map, separated by type."""
-        # Create separate feature groups for each facility type and their radius circles
-        municipal_layer = folium.FeatureGroup(name="Municipal Facilities (Green)")
-        municipal_radius = folium.FeatureGroup(name="Municipal 5km Radius")
-        ymca_layer = folium.FeatureGroup(name="YMCA Facilities (Red)")
-        ymca_radius = folium.FeatureGroup(name="YMCA 5km Radius")
-        university_layer = folium.FeatureGroup(name="University Facilities (Purple)")
-        university_radius = folium.FeatureGroup(name="University 5km Radius")
-        private_layer = folium.FeatureGroup(name="Private Facilities (Orange)")
-        private_radius = folium.FeatureGroup(name="Private 5km Radius")
-        regional_layer = folium.FeatureGroup(name="Regional Facilities (Yellow)")
-        regional_radius = folium.FeatureGroup(name="Regional 5km Radius")
+    def add_facility_markers(self, map_obj: folium.Map, facilities: List[Dict]) -> None:
+        """Add aquatic facility markers to the map with color-coded layers."""
+        # Create feature groups for different facility types
+        municipal_layer = folium.FeatureGroup(name="Municipal Facilities")
+        ymca_layer = folium.FeatureGroup(name="YMCA Facilities")
+        university_layer = folium.FeatureGroup(name="University Facilities")
+        private_layer = folium.FeatureGroup(name="Private Facilities")
         
         for facility in facilities:
             # Skip facilities without coordinates
             if 'latitude' not in facility or 'longitude' not in facility:
                 continue
                 
+            # Create popup content
             popup_html = f"""
                 <b>{facility['name']}</b><br>
                 Type: {facility['type']}<br>
                 Address: {facility['address']}<br>
-                Features: {', '.join(facility['features'])}
+                Features: {', '.join(facility.get('features', []))}
             """
             
-            # Determine which layer to add the marker to
-            if facility['type'] == 'Municipal':
-                icon_color = 'green'
-                target_layer = municipal_layer
-                radius_layer = municipal_radius
-            elif facility['type'] == 'YMCA':
-                icon_color = 'red'
-                target_layer = ymca_layer
-                radius_layer = ymca_radius
+            # Determine facility type and color
+            if 'YMCA' in facility['name'] or facility['type'] == 'YMCA':
+                color = 'red'
+                layer = ymca_layer
             elif facility['type'] == 'University':
-                icon_color = 'purple'
-                target_layer = university_layer
-                radius_layer = university_radius
-            elif facility['type'] == 'Regional':
-                icon_color = 'orange'  # Using orange for regional since folium doesn't have yellow
-                target_layer = regional_layer
-                radius_layer = regional_radius
-            else:  # Private facilities
-                icon_color = 'orange'
-                target_layer = private_layer
-                radius_layer = private_radius
-                
+                color = 'purple'
+                layer = university_layer
+            elif facility['type'] == 'Private':
+                color = 'orange'
+                layer = private_layer
+            else:  # Municipal/Public
+                color = 'green'
+                layer = municipal_layer
+            
             # Add marker
             folium.Marker(
                 location=[facility['latitude'], facility['longitude']],
-                popup=folium.Popup(popup_html, max_width=300),
-                icon=folium.Icon(color=icon_color, icon='info-sign'),
-            ).add_to(target_layer)
+                popup=popup_html,
+                icon=folium.Icon(color=color, icon='info-sign')
+            ).add_to(layer)
             
             # Add 5km radius circle
             folium.Circle(
                 location=[facility['latitude'], facility['longitude']],
                 radius=5000,  # 5km in meters
-                color=icon_color,
-                fill=False,
-                weight=2,
-                popup=f"5km radius around {facility['name']}"
-            ).add_to(radius_layer)
+                color=color,
+                fill=True,
+                opacity=0.2
+            ).add_to(layer)
         
-        # Add all layers to the map
+        # Add all layers to map
         municipal_layer.add_to(map_obj)
-        municipal_radius.add_to(map_obj)
         ymca_layer.add_to(map_obj)
-        ymca_radius.add_to(map_obj)
         university_layer.add_to(map_obj)
-        university_radius.add_to(map_obj)
         private_layer.add_to(map_obj)
-        private_radius.add_to(map_obj)
-        regional_layer.add_to(map_obj)
-        regional_radius.add_to(map_obj)
 
-    def add_population_density_layers(self, map_obj: folium.Map):
-        """Add population density heatmap layers for Calgary and Edmonton."""
-        # Add Calgary density layer
-        calgary_heatmap = self.density_layer.create_heatmap_layer('calgary')
-        calgary_heatmap.add_to(map_obj)
-        
-        # Add Edmonton density layer
-        edmonton_heatmap = self.density_layer.create_heatmap_layer('edmonton')
-        edmonton_heatmap.add_to(map_obj)
-
-    def generate_map(self, schools: List[Dict], aquatic_facilities: List[Dict]) -> folium.Map:
-        """Generate the complete map with all markers and layers."""
+    def generate_map(self, schools: List[Dict], facilities: List[Dict]) -> None:
+        """Generate the map with all markers and save it."""
         # Create base map
         map_obj = self.create_base_map()
         
-        # Add markers
+        # Add school markers
         self.add_school_markers(map_obj, schools)
-        self.add_aquatic_markers(map_obj, aquatic_facilities)
+        
+        # Add facility markers
+        self.add_facility_markers(map_obj, facilities)
         
         # Add population density layers
-        self.add_population_density_layers(map_obj)
+        self.density_layer.add_to_map(map_obj)
         
-        # Add layer control
-        folium.LayerControl().add_to(map_obj)
-        
-        return map_obj
+        # Save the map
+        map_obj.save('index.html')
 
 def main():
     """Main function to generate the map."""
-    # Initialize map generator
-    generator = MapGenerator()
-    
-    # Get school data
-    print("Getting schools data...")
+    # Load school data from cache
     school_scraper = CBEScraper()
-    schools = school_scraper.scrape_schools(force_refresh=False)
-    print(f"Found {len(schools)} schools")
+    schools = school_scraper.load_cached_data()
+    print(f"Loaded {len(schools)} schools from cache")
     
-    # Get aquatic facility data
-    print("\nGetting aquatic facilities data...")
+    # Load aquatic facility data
     aquatic_scraper = AquaticScraper()
-    facilities = aquatic_scraper.scrape_facilities(force_refresh=False)
-    print(f"Found {len(facilities)} aquatic facilities")
+    facilities = aquatic_scraper.load_cached_data()
+    print(f"Loaded {len(facilities)} aquatic facilities")
     
     # Generate map
-    map_obj = generator.generate_map(schools, facilities)
-    
-    # Save the map
-    output_file = "index.html"
-    map_obj.save(output_file)
-    print(f"\nMap has been generated and saved to {output_file}")
+    map_generator = MapGenerator()
+    map_generator.generate_map(schools, facilities)
+    print("Map generated successfully!")
 
 if __name__ == "__main__":
     main() 
