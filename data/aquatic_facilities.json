@@ -274,5 +274,45 @@
     ],
     "latitude": 51.035583,
     "longitude": -114.186139
+  },
+  {
+    "name": "Vecova Recreation Centre",
+    "address": "3304 33 Street NW, Calgary, AB T2L 2A6",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre",
+      "Accessible facilities"
+    ],
+    "latitude": 51.082083,
+    "longitude": -114.133222
+  },
+  {
+    "name": "Thornhill Aquatic & Recreation Centre",
+    "address": "6715 Centre Street N, Calgary, AB T2K 0V3",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.11287676342279,
+    "longitude": -114.06513333966392
+  },
+  {
+    "name": "Saddletowne YMCA",
+    "address": "7555 Falconridge Blvd NE, Calgary, AB T3J 0C9",
+    "type": "YMCA",
+    "features": [
+      "25m Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre"
+    ],
+    "latitude": 51.120380320965346,
+    "longitude": -113.94821202922515
   }
 ]

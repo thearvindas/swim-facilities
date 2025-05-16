@@ -51,9 +51,13 @@ class MapGenerator:
         school_layer.add_to(map_obj)
         return school_layer
 
-    def add_aquatic_markers(self, map_obj: folium.Map, facilities: List[Dict]) -> folium.FeatureGroup:
-        """Add aquatic facility markers to the map."""
-        aquatic_layer = folium.FeatureGroup(name="Aquatic Facilities")
+    def add_aquatic_markers(self, map_obj: folium.Map, facilities: List[Dict]) -> None:
+        """Add aquatic facility markers to the map, separated by type."""
+        # Create separate feature groups for each facility type
+        municipal_layer = folium.FeatureGroup(name="Municipal Facilities (Green)")
+        ymca_layer = folium.FeatureGroup(name="YMCA Facilities (Red)")
+        university_layer = folium.FeatureGroup(name="University Facilities (Purple)")
+        private_layer = folium.FeatureGroup(name="Private Facilities (Orange)")
         
         for facility in facilities:
             # Skip facilities without coordinates
@@ -67,24 +71,31 @@ class MapGenerator:
                 Features: {', '.join(facility['features'])}
             """
             
-            # Color coding based on facility type
+            # Determine which layer to add the marker to
             if facility['type'] == 'Municipal':
                 icon_color = 'green'
+                target_layer = municipal_layer
             elif facility['type'] == 'YMCA':
                 icon_color = 'red'
+                target_layer = ymca_layer
             elif facility['type'] == 'University':
                 icon_color = 'purple'
+                target_layer = university_layer
             else:  # Private facilities
                 icon_color = 'orange'
+                target_layer = private_layer
                 
             folium.Marker(
                 location=[facility['latitude'], facility['longitude']],
                 popup=folium.Popup(popup_html, max_width=300),
                 icon=folium.Icon(color=icon_color, icon='info-sign'),
-            ).add_to(aquatic_layer)
+            ).add_to(target_layer)
         
-        aquatic_layer.add_to(map_obj)
-        return aquatic_layer
+        # Add all layers to the map
+        municipal_layer.add_to(map_obj)
+        ymca_layer.add_to(map_obj)
+        university_layer.add_to(map_obj)
+        private_layer.add_to(map_obj)
 
     def generate_map(self, schools: List[Dict], aquatic_facilities: List[Dict]) -> folium.Map:
         """Generate the complete map with all markers and layers."""
