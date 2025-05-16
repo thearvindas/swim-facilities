@@ -10,12 +10,15 @@ import pandas as pd
 from typing import List, Dict, Optional
 from school_scraper import CBEScraper
 from aquatic_scraper import AquaticScraper
+from population_density import PopulationDensityLayer
 
 class MapGenerator:
     def __init__(self):
         """Initialize the map generator with Calgary's center coordinates."""
         self.CALGARY_CENTER = [51.0486, -114.0708]
+        self.EDMONTON_CENTER = [53.5461, -113.4937]
         self.ZOOM_LEVEL = 11
+        self.density_layer = PopulationDensityLayer()
 
     def create_base_map(self) -> folium.Map:
         """Create the base map centered on Calgary."""
@@ -128,6 +131,16 @@ class MapGenerator:
         regional_layer.add_to(map_obj)
         regional_radius.add_to(map_obj)
 
+    def add_population_density_layers(self, map_obj: folium.Map):
+        """Add population density heatmap layers for Calgary and Edmonton."""
+        # Add Calgary density layer
+        calgary_heatmap = self.density_layer.create_heatmap_layer('calgary')
+        calgary_heatmap.add_to(map_obj)
+        
+        # Add Edmonton density layer
+        edmonton_heatmap = self.density_layer.create_heatmap_layer('edmonton')
+        edmonton_heatmap.add_to(map_obj)
+
     def generate_map(self, schools: List[Dict], aquatic_facilities: List[Dict]) -> folium.Map:
         """Generate the complete map with all markers and layers."""
         # Create base map
@@ -136,6 +149,9 @@ class MapGenerator:
         # Add markers
         self.add_school_markers(map_obj, schools)
         self.add_aquatic_markers(map_obj, aquatic_facilities)
+        
+        # Add population density layers
+        self.add_population_density_layers(map_obj)
         
         # Add layer control
         folium.LayerControl().add_to(map_obj)
