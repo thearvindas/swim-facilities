@@ -53,11 +53,15 @@ class MapGenerator:
 
     def add_aquatic_markers(self, map_obj: folium.Map, facilities: List[Dict]) -> None:
         """Add aquatic facility markers to the map, separated by type."""
-        # Create separate feature groups for each facility type
+        # Create separate feature groups for each facility type and their radius circles
         municipal_layer = folium.FeatureGroup(name="Municipal Facilities (Green)")
+        municipal_radius = folium.FeatureGroup(name="Municipal 5km Radius")
         ymca_layer = folium.FeatureGroup(name="YMCA Facilities (Red)")
+        ymca_radius = folium.FeatureGroup(name="YMCA 5km Radius")
         university_layer = folium.FeatureGroup(name="University Facilities (Purple)")
+        university_radius = folium.FeatureGroup(name="University 5km Radius")
         private_layer = folium.FeatureGroup(name="Private Facilities (Orange)")
+        private_radius = folium.FeatureGroup(name="Private 5km Radius")
         
         for facility in facilities:
             # Skip facilities without coordinates
@@ -75,27 +79,46 @@ class MapGenerator:
             if facility['type'] == 'Municipal':
                 icon_color = 'green'
                 target_layer = municipal_layer
+                radius_layer = municipal_radius
             elif facility['type'] == 'YMCA':
                 icon_color = 'red'
                 target_layer = ymca_layer
+                radius_layer = ymca_radius
             elif facility['type'] == 'University':
                 icon_color = 'purple'
                 target_layer = university_layer
+                radius_layer = university_radius
             else:  # Private facilities
                 icon_color = 'orange'
                 target_layer = private_layer
+                radius_layer = private_radius
                 
+            # Add marker
             folium.Marker(
                 location=[facility['latitude'], facility['longitude']],
                 popup=folium.Popup(popup_html, max_width=300),
                 icon=folium.Icon(color=icon_color, icon='info-sign'),
             ).add_to(target_layer)
+            
+            # Add 5km radius circle
+            folium.Circle(
+                location=[facility['latitude'], facility['longitude']],
+                radius=5000,  # 5km in meters
+                color=icon_color,
+                fill=False,
+                weight=2,
+                popup=f"5km radius around {facility['name']}"
+            ).add_to(radius_layer)
         
         # Add all layers to the map
         municipal_layer.add_to(map_obj)
+        municipal_radius.add_to(map_obj)
         ymca_layer.add_to(map_obj)
+        ymca_radius.add_to(map_obj)
         university_layer.add_to(map_obj)
+        university_radius.add_to(map_obj)
         private_layer.add_to(map_obj)
+        private_radius.add_to(map_obj)
 
     def generate_map(self, schools: List[Dict], aquatic_facilities: List[Dict]) -> folium.Map:
         """Generate the complete map with all markers and layers."""
