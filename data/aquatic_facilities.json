@@ -358,5 +358,36 @@
     ],
     "latitude": 50.96242536281527,
     "longitude": -114.10825438733833
+  },
+  {
+    "name": "Spray Lake Sawmills Recreation Centre",
+    "address": "800 Griffin Road E, Cochrane, AB T4C 2B8",
+    "type": "Regional",
+    "features": [
+      "Pool",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre",
+      "Arena",
+      "Curling rink"
+    ],
+    "latitude": 51.17584958188807,
+    "longitude": -114.45274750823292
+  },
+  {
+    "name": "Genesis Place Recreation Centre",
+    "address": "800 East Lake Boulevard NE, Airdrie, AB T4A 2K9",
+    "type": "Regional",
+    "features": [
+      "Pool",
+      "Wave pool",
+      "Water slides",
+      "Hot tub",
+      "Steam room",
+      "Fitness Centre",
+      "Arena"
+    ],
+    "latitude": 51.28460174933885,
+    "longitude": -113.99469695487784
   }
 ]
