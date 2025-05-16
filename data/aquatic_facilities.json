@@ -618,5 +618,90 @@
     ],
     "latitude": 53.5229,
     "longitude": -113.5323
+  },
+  {
+    "name": "Fountain Park Recreation Centre",
+    "address": "4 Cunningham Road, St. Albert, AB T8N 2E9",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Recreation facilities",
+      "Fitness Centre"
+    ],
+    "latitude": 53.6215,
+    "longitude": -113.6287
+  },
+  {
+    "name": "K&K Swim School (St. Albert Inn)",
+    "address": "156 St Albert Trail, St. Albert, AB T8N 0P5",
+    "type": "Private",
+    "features": [
+      "Pool",
+      "Swim lessons",
+      "Training facilities"
+    ],
+    "latitude": 53.6327,
+    "longitude": -113.6251
+  },
+  {
+    "name": "K&K Swim School (Best Western Plus)",
+    "address": "460 St Albert Trail, St. Albert, AB T8N 5J9",
+    "type": "Private",
+    "features": [
+      "Pool",
+      "Swim lessons",
+      "Training facilities"
+    ],
+    "latitude": 53.6495,
+    "longitude": -113.6282
+  },
+  {
+    "name": "Millennium Place",
+    "address": "2000 Premier Way, Sherwood Park, AB T8H 2G4",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Recreation facilities",
+      "Fitness Centre"
+    ],
+    "latitude": 53.5324,
+    "longitude": -113.2977
+  },
+  {
+    "name": "Kinsmen Leisure Centre",
+    "address": "61 Festival Way, Sherwood Park, AB T8A 4Z1",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Recreation facilities",
+      "Fitness Centre"
+    ],
+    "latitude": 53.5265,
+    "longitude": -113.3145
+  },
+  {
+    "name": "Emerald Hills Leisure Centre",
+    "address": "355 Emerald Drive, Sherwood Park, AB T8H 0N6",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Recreation facilities",
+      "Fitness Centre"
+    ],
+    "latitude": 53.5483,
+    "longitude": -113.2890
+  },
+  {
+    "name": "TransAlta Tri Leisure Centre",
+    "address": "9 Tri Leisure Way, Spruce Grove, AB T7X 0T3",
+    "type": "Municipal",
+    "features": [
+      "Pool",
+      "Century 21 Aquatic Complex",
+      "Recreation facilities",
+      "Fitness Centre"
+    ],
+    "latitude": 53.5346,
+    "longitude": -113.9398
   }
 ]
