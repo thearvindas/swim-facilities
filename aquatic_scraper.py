@@ -9,13 +9,22 @@ from typing import List, Dict
 class AquaticScraper:
     def __init__(self):
         self.cache_file = "data/aquatic_facilities.json"
+        print(f"Debug: Current working directory: {os.getcwd()}")
+        print(f"Debug: Looking for file at: {os.path.abspath(self.cache_file)}")
+        print(f"Debug: Directory contents: {os.listdir('.')}")
+        if os.path.exists('data'):
+            print(f"Debug: Data directory contents: {os.listdir('data')}")
 
     def load_cached_data(self) -> List[Dict]:
         """Load aquatic facility data from cache if it exists."""
         if os.path.exists(self.cache_file):
             print("Loading aquatic facilities from cache...")
+            print(f"Debug: Found cache file at {self.cache_file}")
             with open(self.cache_file, 'r') as f:
-                return json.load(f)
+                data = json.load(f)
+                print(f"Debug: Loaded {len(data)} facilities from cache")
+                return data
+        print(f"Debug: Cache file not found at {self.cache_file}")
         return []
 
     def scrape_facilities(self, force_refresh=False) -> List[Dict]:
