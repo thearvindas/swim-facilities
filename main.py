@@ -64,7 +64,7 @@ class MapGenerator:
         private_radius = folium.FeatureGroup(name="Private 5km Radius")
         regional_layer = folium.FeatureGroup(name="Regional Facilities (Yellow)")
         regional_radius = folium.FeatureGroup(name="Regional 5km Radius")
-        potential_layer = folium.FeatureGroup(name="Potential Sites (Blue)")
+        potential_layer = folium.FeatureGroup(name="Potential Sites (Pink)")
         potential_radius = folium.FeatureGroup(name="Potential Sites 5km Radius")
         
         for facility in facilities:
@@ -97,7 +97,7 @@ class MapGenerator:
                 target_layer = regional_layer
                 radius_layer = regional_radius
             elif facility['type'] == 'Potential':
-                icon_color = 'blue'
+                icon_color = 'lightred'  # Changed from blue to lightred to be more visible
                 target_layer = potential_layer
                 radius_layer = potential_radius
             else:  # Private facilities
