@@ -43,24 +43,29 @@ python main.py
 
 This will:
 1. Load or scrape school data from the CBE website
-2. Generate an interactive map (`calgary_schools_aquatic_map.html`)
+2. Generate an interactive map (`index.html`)
 3. Save the map in your current directory
 
 ## Data Sources
 
 - School data is scraped from the [Calgary Board of Education website](https://cbe.ab.ca/)
 - School locations are geocoded using OpenStreetMap's Nominatim service
-- Aquatic facility data is currently using sample data (to be expanded)
+- Aquatic facility data is manually curated from various sources
 
 ## Project Structure
 
 ```
-calgary_map_project/
+swim-facilities/
 ├── main.py                # Main script to generate the map
 ├── school_scraper.py      # Module for scraping school data
+├── aquatic_scraper.py     # Module for managing aquatic facility data
 ├── requirements.txt       # Python dependencies
-└── data/                  # Cached data directory
-    └── cbe_schools.json   # Cached school data
+├── build.sh              # Build script for deployment
+├── vercel.json           # Vercel configuration
+├── index.html            # Generated map output
+└── data/                 # Data directory
+    ├── cbe_schools.json   # Cached school data
+    └── aquatic_facilities.json  # Aquatic facility data
 ```
 
 ## Contributing
