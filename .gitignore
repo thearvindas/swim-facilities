@@ -32,6 +32,7 @@ ENV/
 *.swo
 
 # Project specific
-data/
+data/*
+!data/*.json
 *.html
 !index.html 

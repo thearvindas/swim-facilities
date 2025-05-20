@@ -64,6 +64,8 @@ class MapGenerator:
         private_radius = folium.FeatureGroup(name="Private 5km Radius")
         regional_layer = folium.FeatureGroup(name="Regional Facilities (Yellow)")
         regional_radius = folium.FeatureGroup(name="Regional 5km Radius")
+        potential_layer = folium.FeatureGroup(name="Potential Sites (Blue)")
+        potential_radius = folium.FeatureGroup(name="Potential Sites 5km Radius")
         
         for facility in facilities:
             # Skip facilities without coordinates
@@ -94,6 +96,10 @@ class MapGenerator:
                 icon_color = 'orange'  # Using orange for regional since folium doesn't have yellow
                 target_layer = regional_layer
                 radius_layer = regional_radius
+            elif facility['type'] == 'Potential':
+                icon_color = 'blue'
+                target_layer = potential_layer
+                radius_layer = potential_radius
             else:  # Private facilities
                 icon_color = 'orange'
                 target_layer = private_layer
@@ -127,6 +133,8 @@ class MapGenerator:
         private_radius.add_to(map_obj)
         regional_layer.add_to(map_obj)
         regional_radius.add_to(map_obj)
+        potential_layer.add_to(map_obj)
+        potential_radius.add_to(map_obj)
 
     def generate_map(self, schools: List[Dict], aquatic_facilities: List[Dict]) -> folium.Map:
         """Generate the complete map with all markers and layers."""

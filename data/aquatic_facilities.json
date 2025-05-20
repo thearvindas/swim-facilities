@@ -703,5 +703,77 @@
     ],
     "latitude": 53.5346,
     "longitude": -113.9398
+  },
+  {
+    "name": "Westbrook Station Site",
+    "address": "17 Avenue & 33 Street SW, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Transit-oriented location",
+      "Existing infrastructure"
+    ],
+    "latitude": 51.0375,
+    "longitude": -114.1339
+  },
+  {
+    "name": "Viscount Bennett Centre Site",
+    "address": "2501 Richmond Road SW, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Former educational facility",
+      "Existing infrastructure"
+    ],
+    "latitude": 51.0308,
+    "longitude": -114.1226
+  },
+  {
+    "name": "Former R.B. Bennett School Site",
+    "address": "Bowness, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Former school location",
+      "Community accessible"
+    ],
+    "latitude": 51.0876,
+    "longitude": -114.1891
+  },
+  {
+    "name": "Kingsland Former School Site",
+    "address": "7500 block of 5 Street SW, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Former school location",
+      "Central location"
+    ],
+    "latitude": 50.9868,
+    "longitude": -114.0724
+  },
+  {
+    "name": "Fairview Arena Site",
+    "address": "8038 Fairmount Drive SE, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Former arena location",
+      "Existing recreational zoning"
+    ],
+    "latitude": 50.9783,
+    "longitude": -114.0628
+  },
+  {
+    "name": "Beltline Aquatic & Fitness Centre",
+    "address": "221 12 Avenue SW, Calgary, AB",
+    "type": "Potential",
+    "features": [
+      "Potential aquatic facility site",
+      "Former aquatic facility",
+      "Central location"
+    ],
+    "latitude": 51.0421,
+    "longitude": -114.0667
   }
 ]
